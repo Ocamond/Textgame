@@ -3,7 +3,7 @@ import world
 from collections import OrderedDict
 
 def play():
-    print("Escape form medieval forrest!")
+    print("Escape from medieval forrest!")
     world.parse_world_dsl()
     player = Player()
     while player.is_alive() and not player.victory:

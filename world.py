@@ -65,7 +65,7 @@ class EnemyTile(MapTile):
 
 class TraderTile(MapTile):
     def __init__ (self,x,y):
-        self.trader = npc.Trader
+        self.trader = npc.Trader()
         super().__init__(x,y)
     
     def intro_text(self):
@@ -89,7 +89,7 @@ class TraderTile(MapTile):
                     self.swap(seller, buyer, to_swap)
 
                 except ValueError:
-                    input("Invalid choice!")
+                    print("Invalid choice!")
     
     def swap(self, seller, buyer, item):
         if item.value > buyer.gold:
