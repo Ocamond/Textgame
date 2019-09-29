@@ -96,7 +96,7 @@ class TraderTile(MapTile):
             print("That's too expensive")
             return
         seller.inventory.remove(item)
-        buyer.invenotry.append(item)
+        buyer.inventory.append(item)
         seller.gold = seller.gold + item.value
         buyer.gold = buyer.gold - item.value
         print ("Trade complete")
