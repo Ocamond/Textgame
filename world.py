@@ -80,7 +80,7 @@ class TraderTile(MapTile):
         
         while True:
             user_input = input("Choose an item or press Q to exit: ")
-            if user_input in ["Q", "Q"]:
+            if user_input in ["Q", "q"]:
                 return
             else:
                 try:
