@@ -80,7 +80,7 @@ class TraderTile(MapTile):
         
         while True:
             user_input = input("Choose an item or press Q to exit: ")
-            if user_input in ["Q", "Q"]:
+            if user_input in ["Q", "q"]:
                 return
             else:
                 try:
@@ -108,9 +108,11 @@ class TraderTile(MapTile):
             if user_input in ["Q", "q"]:
                 return
             elif user_input in ["B", "b"]:
+                print("You have {} Gold".format(player.gold))
                 print("Here is what is available to buy: ")
                 self.trade(player, self.trader)
             elif user_input in ["S", "s"]:
+                print("You have {} Gold".format(player.gold))
                 print("Here is what is available to sell: ")
                 self.trade(self.trader, player)
             else:
