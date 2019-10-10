@@ -40,7 +40,7 @@ class EnemyTile(MapTile):
             self.alive_text ="A gaint spider jumps down from its web in front of you!"
             self.dead_text = "The corpse of a dead spider rots on the ground."
         elif r < 0.80:
-            self.enemy = enemies.Orge()
+            self.enemy = enemies.Ogre()
             self.alive_text = "An Ogre is blocking your path"
             self.dead_text = "A dead Ogre reminds you of your triumph"
         elif r < 0.95:
@@ -62,6 +62,12 @@ class EnemyTile(MapTile):
         if self.enemy.is_alive():
             player.hp = player.hp - self.enemy.damage
             print("Enemy does {} damage. You have {} HP remaining.".format(self.enemy.damage, player.hp))
+
+    def GoldDrop(self, player):
+        if not self.enemy.is_alive():
+            player.gold += self.enemy.gold
+            print("You have collected {} Gold from the corpse".format(self.enemy.gold))
+            
 
 class TraderTile(MapTile):
     def __init__ (self,x,y):

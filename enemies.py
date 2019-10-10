@@ -13,21 +13,25 @@ class GiantSpider(Enemy):
         self.name = "Giant Spider"
         self.hp = 10
         self.damage = 2
+        self.gold = 5
 
-class Orge(Enemy):
+class Ogre(Enemy):
     def __init__(self):
         self.name = "Ogre"
         self.hp = 30
         self.damage = 10
+        self.gold = 10
     
 class Bear(Enemy):
     def __init__(self):
         self.name = "Bear"
         self.hp = 100
         self.damage = 4
+        self.gold = 20
 
 class Wolf(Enemy):
     def __init__(self):
         self.name = "Wolf"
         self.hp = 80
         self.damage = 15
+        self.gold = 50
