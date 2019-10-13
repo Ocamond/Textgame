@@ -67,7 +67,13 @@ class EnemyTile(MapTile):
         if not self.enemy.is_alive():
             player.gold += self.enemy.gold
             print("You have collected {} Gold from the corpse".format(self.enemy.gold))
-            
+
+class QuestMonster(MapTile):
+    def __init__(self, x, y):
+        self.enemy = enemies.RedSpider
+        self.alive_text = """There is big red spider looking at you angry for disturbing its lair"""
+        self.dead_text = """The rare red spider lies on the ground you find the child trapped in 
+                            her nest she wants you to take her to her mother Emma she might be west from here """
 
 class TraderTile(MapTile):
     def __init__ (self,x,y):
@@ -124,6 +130,15 @@ class TraderTile(MapTile):
             else:
                 print("invalid choice!")
 
+class QuestTile(MapTile):
+    def __init__ (self, x, y):
+        self.NPC = npc.QuestNPC()
+        super.__init__(x,y)
+    
+    def intro_text(self):
+        return """ You see a woman on her knees begging you to retrieve her child.... 
+                   She says that a big monster took her and fled east... """
+
 class FindGoldTile(MapTile):
     def __init__ (self, x, y):
         self.gold = random.randint(1, 50)
@@ -147,10 +162,10 @@ world_dsl = """
 |FG|EN|EN|TT|EN|VT|
 |EN|  |  |EN|FG|  |
 |EN|  |  |EN|  |EN|
-|EN|  |FG|EN|EN|FG|
-|TT|EN|FG|EN|FG|EN|
-|EN|  |  |EN|  |TT|
-|ST|EN|FG|EN|EN|EN|
+|EN|  |  |EN|EN|FG|
+|TT|EN|FG|EN|  |TT|
+|EN|  |  |EN|  |  |
+|ST|EN|FG|QT|EN|QM|
 """
 
 def is_dsl_valid(dsl):
@@ -172,6 +187,7 @@ tile_type_dict = {"VT": VictoryTile,
                   "ST": StartTile,
                   "FG": FindGoldTile,
                   "TT": TraderTile,
+                  "QT": QuestTile,
                   "  ": None}
 world_map = []
 

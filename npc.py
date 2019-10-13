@@ -17,3 +17,10 @@ class Trader(NonPlayableCharacter):
                          items.Rustysword(),
                          items.HealingPotion()]
                          
+class QuestNPC(NonPlayableCharacter):
+    def __init__(self):
+        self.name = "Emma"
+        self.gold = 500
+        self.inventory = [items.CrustyBread(),
+                          items.CrustyBread(),
+                          items.HealingPotion]

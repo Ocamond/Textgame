@@ -50,3 +50,15 @@ class HealingPotion(Consumable):
         self.name = "Healing Potion"
         self.healing_value = 50
         self.value = 50
+
+class Sellable:
+    def __init__(self):
+        raise NotImplementedError("Do not creat Raw Sellable")
+    
+    def __str__(self):
+        return self.name
+
+class Jewelry(Sellable):
+    def __init__(self):
+        self.name = "Gold ring"
+        self.value = 150

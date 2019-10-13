@@ -35,3 +35,10 @@ class Wolf(Enemy):
         self.hp = 80
         self.damage = 15
         self.gold = 50
+
+class RedSpider(Enemy):
+    def __init__(self):
+        self.name = "Red Spider"
+        self.hp = 100
+        self.damage = 15
+        self.gold = 100
