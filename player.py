@@ -42,6 +42,8 @@ class Player:
         enemy.hp -= best_weapon.damage
         if not enemy.is_alive():
             print ("You killed {}!".format(enemy.name))
+            self.gold += enemy.gold
+            print("You have collected {} Gold from the corpse".format(enemy.gold))
         else:
             print ("{} HP is {}!".format(enemy.name, enemy.hp))
     

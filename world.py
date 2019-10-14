@@ -63,11 +63,6 @@ class EnemyTile(MapTile):
             player.hp = player.hp - self.enemy.damage
             print("Enemy does {} damage. You have {} HP remaining.".format(self.enemy.damage, player.hp))
 
-    def GoldDrop(self, player):
-        if not self.enemy.is_alive():
-            player.gold += self.enemy.gold
-            print("You have collected {} Gold from the corpse".format(self.enemy.gold))
-
 class QuestMonster(MapTile):
     def __init__(self, x, y):
         self.enemy = enemies.RedSpider
@@ -133,7 +128,7 @@ class TraderTile(MapTile):
 class QuestTile(MapTile):
     def __init__ (self, x, y):
         self.NPC = npc.QuestNPC()
-        super.__init__(x,y)
+        super().__init__(x,y)
     
     def intro_text(self):
         return """ You see a woman on her knees begging you to retrieve her child.... 
@@ -153,8 +148,7 @@ class FindGoldTile(MapTile):
     
     def intro_text(self):
         if self.gold_claimed:
-            return """ Another unremarkable part of the forest. You must forge onwards. 
-            """
+            return " Another unremarkable part of the forest. You must forge onwards. "
         else:
             return "Soneone dropped some gold. You pick it up."
 
@@ -188,6 +182,7 @@ tile_type_dict = {"VT": VictoryTile,
                   "FG": FindGoldTile,
                   "TT": TraderTile,
                   "QT": QuestTile,
+                  "QM": QuestMonster,
                   "  ": None}
 world_map = []
 
