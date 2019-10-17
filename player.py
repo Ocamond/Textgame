@@ -7,9 +7,10 @@ class Player:
         
         self.x = world.start_tile_location[0]
         self.y = world.start_tile_location[1]
-        self.hp = 100
-        self.gold = 5
+        self.hp = 150
+        self.gold = 10
         self.victory = False
+        self.QuestStatus = False
     
     def is_alive(self):
         return self.hp > 0
@@ -62,7 +63,7 @@ class Player:
             choice = input("")
             try:
                 to_eat = consumables[int(choice) - 1]
-                self.hp = min(100, self.hp + to_eat.healing_value)
+                self.hp = min(150, self.hp + to_eat.healing_value)
                 self.inventory.remove(to_eat)
                 print("Current HP: {}".format(self.hp))
                 valid = True

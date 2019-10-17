@@ -10,7 +10,7 @@ class Rock(Weapon):
         self.name = "Rock"
         self.description = "A fist-sized rock, suitable for bludgeoning"
         self.damage = 5
-        self.value = 1
+        self.value = 5
 
 class Dagger(Weapon):
     def __init__(self):
@@ -62,3 +62,15 @@ class Jewelry(Sellable):
     def __init__(self):
         self.name = "Gold ring"
         self.value = 150
+
+class Web(Sellable):
+    def __init__(self):
+        self.name = "Web of a spider"
+        self.description = "Can be sold for now"
+        self.value = 5
+
+class BearFur(Sellable):
+    def __init__(self):
+        self.name = "Bear Fur"
+        self.description = "Bear Fur can be sold"
+        self.value = 15

@@ -36,6 +36,8 @@ def get_available_actions(room, player):
         action_adder(actions, 't', player.trade, "Trade")
     if isinstance(room, world.EnemyTile) and room.enemy.is_alive():
         action_adder(actions, 'a', player.attack, "Attack")
+    elif isinstance(room, world.QuestMonster) and room.enemy.is_alive():
+        action_adder(actions, 'a', player.attack, "Attack")
     else:
         if world.tile_at(room.x, room.y - 1):
             action_adder(actions, 'n', player.move_north, "Go north")

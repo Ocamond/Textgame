@@ -1,3 +1,5 @@
+import items
+
 class Enemy:
     def __init__ (self):
         raise NotImplementedError ("Do not create raw Enemy objectiv")
@@ -14,6 +16,7 @@ class GiantSpider(Enemy):
         self.hp = 10
         self.damage = 2
         self.gold = 5
+        self.inventory = [items.Web()]
 
 class Ogre(Enemy):
     def __init__(self):
@@ -21,6 +24,7 @@ class Ogre(Enemy):
         self.hp = 30
         self.damage = 10
         self.gold = 10
+        self.inventory = [items.Rock()]
     
 class Bear(Enemy):
     def __init__(self):
@@ -28,6 +32,7 @@ class Bear(Enemy):
         self.hp = 100
         self.damage = 4
         self.gold = 20
+        self.inventory = [items.BearFur()]
 
 class Wolf(Enemy):
     def __init__(self):
@@ -42,3 +47,4 @@ class RedSpider(Enemy):
         self.hp = 100
         self.damage = 15
         self.gold = 100
+        self.inventory = [items.Jewelry()]

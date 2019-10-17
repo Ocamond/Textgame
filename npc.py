@@ -23,4 +23,10 @@ class QuestNPC(NonPlayableCharacter):
         self.gold = 500
         self.inventory = [items.CrustyBread(),
                           items.CrustyBread(),
-                          items.HealingPotion]
+                          items.HealingPotion()]
+
+class RewardNPC(NonPlayableCharacter):
+    def __init__(self):
+        self.name = "Sophia"
+        self.gold = 0
+        self.inventory = [items.Jewelry()]
