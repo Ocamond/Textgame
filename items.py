@@ -1,64 +1,50 @@
 class Weapon:
-    def __init__(self):
-        raise NotImplementedError("Do not create raw Weapon object")
+    def __init__(self,name,description,damage,value):
+        self.name = name 
+        self.description = description
+        self.damage = damage
+        self.value = value
 
     def __str__(self):
         return self.name
 
-class Rock(Weapon):
-    def __init__(self):
-        self.name = "Rock"
-        self.description = "A fist-sized rock, suitable for bludgeoning"
-        self.damage = 5
-        self.value = 1
+Rock = Weapon("Rock", 
+             "Its a big rock you can hit enemies with it",
+             5,5)
 
-class Dagger(Weapon):
-    def __init__(self):
-        self.name = "Dagger"
-        self.description = "A small dagger with some rust." and "Somewhat mire dangerous than a rock."
-        self.damage = 10
-        self.value = 20
+Dagger = Weapon("Dagger",
+                "A small dagger woth some rust." and "Somewhat mire dangerous than a rock.",
+                10,20)
 
-class Rustysword(Weapon):
-    def __init__(self):
-        self.name = "Rustysword"
-        self.description = "This sword is showing its age," and "but still has some fight in it"
-        self.damage = 20
-        self.value = 100
+Rustysword = Weapon("Rustysword",
+                    "This sword is showing its age," and "but still has some fight in it",
+                    20, 100)
 
 class Consumable:
-    def __init__(self):
-        raise NotImplementedError("Do not create raw Consumable objects.")
+    def __init__(self,name, healing_value, value):
+        self.name = name
+        self.healing_value = healing_value
+        self.value = value
 
     def __str__(self):
         return "{} (+ {} HP)".format(self.name, self.healing_value)
 
-class CrustyBread(Consumable):
-    def __init__(self):
-        self.name = "CrustyBread"
-        self.healing_value = 10
-        self.value = 12
+CrustyBread = Consumable("CrustyBread",10, 12)
 
-class Apple(Consumable):
-    def __init__(self):
-        self.name = "Apple"
-        self.healing_value = 5
-        self.value = 6
+Apple = Consumable("Apple",5,6)
 
-class HealingPotion(Consumable):
-    def __init__(self):
-        self.name = "Healing Potion"
-        self.healing_value = 50
-        self.value = 50
+HealingPotion = Consumable("Healing Potion", 50, 100)
 
 class Sellable:
-    def __init__(self):
-        raise NotImplementedError("Do not creat Raw Sellable")
+    def __init__(self, name, value):
+        self.name = name 
+        self.value = value 
     
     def __str__(self):
         return self.name
 
-class Jewelry(Sellable):
-    def __init__(self):
-        self.name = "Gold ring"
-        self.value = 150
+GoldRing = Sellable("Gold ring", 150)
+
+Web = Sellable("Web",5)
+
+BearFur = Sellable ("Bear Fur", 15)

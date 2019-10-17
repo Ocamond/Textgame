@@ -1,6 +1,12 @@
+import items
+
 class Enemy:
-    def __init__ (self):
-        raise NotImplementedError ("Do not create raw Enemy objectiv")
+    def __init__ (self, name, hp,damage,gold,inventory):
+        self.name = name
+        self.hp = hp
+        self.damage = damage
+        self.gold = gold
+        self.inventory = inventory
  
     def __str__(self):
         return self.name
@@ -8,37 +14,26 @@ class Enemy:
     def is_alive(self):
         return self.hp > 0
 
-class GiantSpider(Enemy):
-    def __init__(self):
-        self.name = "Giant Spider"
-        self.hp = 10
-        self.damage = 2
-        self.gold = 5
+GiantSpider = Enemy("Giant Spider", 10, 2, 5, [items. Web])
 
-class Ogre(Enemy):
-    def __init__(self):
-        self.name = "Ogre"
-        self.hp = 30
-        self.damage = 10
-        self.gold = 10
+Ogre = Enemy("Ogre", 30, 10, 10, [items.Rock])
+
+Bear = Enemy("Bear", 100, 4, 20, [items.BearFur])
+
+Wolf = Enemy("Wolf", 80, 15, 50,[])
+
+class BossEnemy:
+    def __init__(self,name, hp, damage, gold, inventory):
+        self.name = name 
+        self.hp = hp
+        self.damage = damage
+        self.gold = gold
+        self.inventory = inventory
     
-class Bear(Enemy):
-    def __init__(self):
-        self.name = "Bear"
-        self.hp = 100
-        self.damage = 4
-        self.gold = 20
+    def __str__(self):
+        return self.name
 
-class Wolf(Enemy):
-    def __init__(self):
-        self.name = "Wolf"
-        self.hp = 80
-        self.damage = 15
-        self.gold = 50
-
-class RedSpider(Enemy):
-    def __init__(self):
-        self.name = "Red Spider"
-        self.hp = 100
-        self.damage = 15
-        self.gold = 100
+    def is_alive(self):
+        return self.hp > 0
+        
+RedSpider = BossEnemy("Red Spider", 100, 15, 100,[items.GoldRing])

@@ -36,19 +36,19 @@ class EnemyTile(MapTile):
     def __init__ (self, x, y):
         r = random.random()
         if r < 0.50:
-            self.enemy = enemies.GiantSpider()
+            self.enemy = enemies.GiantSpider
             self.alive_text ="A gaint spider jumps down from its web in front of you!"
             self.dead_text = "The corpse of a dead spider rots on the ground."
         elif r < 0.80:
-            self.enemy = enemies.Ogre()
+            self.enemy = enemies.Ogre
             self.alive_text = "An Ogre is blocking your path"
             self.dead_text = "A dead Ogre reminds you of your triumph"
         elif r < 0.95:
-            self.enemy = enemies.Bear()
+            self.enemy = enemies.Bear
             self.alive_text = "You see a Bear he looks very strong and dangerouse"
             self.dead_text = "The bear is dead hope there is not another one lurking around"
         else:
-            self.enemy = enemies.Wolf()
+            self.enemy = enemies.Wolf
             self.alive_text = "You have disturbed a sleeping wolf he is very angry"
             self.dead_text = "He is finally dead a though fight it was...."
         
@@ -62,17 +62,42 @@ class EnemyTile(MapTile):
         if self.enemy.is_alive():
             player.hp = player.hp - self.enemy.damage
             print("Enemy does {} damage. You have {} HP remaining.".format(self.enemy.damage, player.hp))
+        if not self.enemy.is_alive():
+            for item in self.enemy.inventory:
+                self.enemy.inventory.remove(item)
+                player.inventory.append(item)
+                print("The Enemy dropped {}. You have collected and added it into your inventory.".format(item))
 
 class QuestMonster(MapTile):
     def __init__(self, x, y):
         self.enemy = enemies.RedSpider
-        self.alive_text = """There is big red spider looking at you angry for disturbing its lair"""
+        self.Sophia = npc.RewardNPC
+        self.alive_text = """There is big red spider looking at you angrily for disturbing its lair"""
         self.dead_text = """The rare red spider lies on the ground you find the child trapped in 
                             her nest she wants you to take her to her mother Emma she might be west from here """
+        super().__init__(x,y)
+    
+    def intro_text(self):
+        text = self.alive_text if self.enemy.is_alive() else self.dead_text
+        return text
+    
+    def modify_player(self,player):
+        if self.enemy.is_alive():
+            player.hp = player.hp - self.enemy.damage
+            print("The red Spider does {} damage. You have {} HP remaining".format(self.enemy.damage, player.hp))
+        if not self.enemy.is_alive():
+            for item in self.enemy.inventory:
+                self.enemy.inventory.remove(item)
+                player.inventory.append(item)
+                print("The Red Spider dropped {}. You have collected and added it into your inventory.".format(item))
+        if not self.enemy.is_alive():
+            player.QuestStatus = True
+            print("You killed the monster the woman wanted you to kill. She might have a reward for you...")
+        
 
 class TraderTile(MapTile):
     def __init__ (self,x,y):
-        self.trader = npc.Trader()
+        self.trader = npc.Trader
         super().__init__(x,y)
     
     def intro_text(self):
@@ -127,12 +152,22 @@ class TraderTile(MapTile):
 
 class QuestTile(MapTile):
     def __init__ (self, x, y):
-        self.NPC = npc.QuestNPC()
+        self.NPC = npc.QuestNPC
         super().__init__(x,y)
     
     def intro_text(self):
         return """ You see a woman on her knees begging you to retrieve her child.... 
                    She says that a big monster took her and fled east... """
+    
+    def getReward(self,player):
+        if player.QuestStatus == True:
+            for item in self.NPC.inventory:
+                self.NPC.inventory.pop(item)
+                player.inventory.append(item)
+                print("I found this on my way into this forrest. Here take it. I think it is more helpfull to you than to me")
+                print("She gives you a Health potion. You put it in your backpack")
+
+
 
 class FindGoldTile(MapTile):
     def __init__ (self, x, y):
